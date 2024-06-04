@@ -44,7 +44,7 @@ label {
 
 select, input {
     background: #FFFFFF;
-    border: 1px solid #bbbbbb;
+    border: 1px solid black;
     border-radius: 20px;
     height: 38px;
     width: 100%;
@@ -81,7 +81,7 @@ button:active {
 
 
 section{
-    border: 2px solid darkcyan;
+    border: 2px solid black;
     margin-top: 36px;
     border-radius: 20px;
     padding: 12px;
@@ -104,7 +104,7 @@ arrow {
 }
 
 .currency {
-    color:#777777;
+    color:black;
     font-size: 14px;
 
 }

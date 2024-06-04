@@ -1,0 +1,121 @@
+
+
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+}
+
+.container{ /* colocar um tamanho padrão na tela*/
+    width: 1400px;
+    height: auto;
+   /* margin: 0 auto;*/
+}
+
+body{
+    background: linear-gradient(#00ff00, #9198e5);
+    
+}   
+
+main {
+    width: 375px;
+    height: auto;
+    border-radius: 20px;
+    margin: 0 auto;
+    padding: 29px 24px 23px;
+    border: 2px solid #000000;
+}
+
+.logo {
+    display: block; /*macete para centralizar qlq coisa*/
+    margin: 10px auto 10px;
+    width: 230px;
+
+}
+
+label {
+    color: #000000;
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+select, input {
+    background: #FFFFFF;
+    border: 1px solid #bbbbbb;
+    border-radius: 20px;
+    height: 38px;
+    width: 100%;
+    margin-bottom: 15px;
+    appearance: none;
+    padding-left: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #555555;
+    cursor: pointer;
+
+}
+
+button{
+    background: #000022;
+    border-radius: 20px;
+    width: 100%;
+    border: none;
+    height: 48px;
+    color: #00ff00;
+    font-weight: 700;
+
+}
+
+button:hover {
+    background: #00ff00;
+    color: #000022;
+    opacity: 0.8;
+}
+
+button:active {
+    opacity: 0.6;
+}
+
+
+section{
+    border: 2px solid darkcyan;
+    margin-top: 36px;
+    border-radius: 20px;
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+arrow {
+    margin: 15px 0;
+}
+
+.currency-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.currency {
+    color:#777777;
+    font-size: 14px;
+
+}
+
+.currency-value, .currency-value-to-convert {
+    color: #555555;
+    font-weight: 900;
+    font-size: 28px;
+}
+
+
+.arrow-img {
+    margin: 5px 0 5px;
+}

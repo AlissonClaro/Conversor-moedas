@@ -1,0 +1,99 @@
+   // HTML
+
+                    <option value="dolar">U$ Dolar Americano</option>
+                    <option value="euro">€ Euro Europeu</option>
+                    <option value="libras">£ Libra Esterlina</option>
+                    <option value="bitcoin">₿ Bitcoin</option>
+
+
+
+                     <img class="currency-img2" src="./assets/real.png" alt="logo-moeda-a-converter">
+                     <p class="currency-value-to-convert">R$ 0,00</p>
+
+
+
+
+
+
+
+    //Desafio.
+    const currencySelectFirst = document.querySelector('.currency-select-first')
+    
+    
+    // Currency Opção First =============================================================================
+
+
+    if(currencySelectFirst.value == 'dolar') { //Se o select estiver selecionado o valor de dolar, vai entrar aqui
+
+        currencyValueConverted.innerHTML = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        }).format(inputCurrencyValue / dolarToday)
+
+    }
+
+    if(currencySelectFirst.value  == 'euro') { //Se o select estiver selecionado o valor de euro, vai entrar aqui
+
+        currencyValueConverted.innerHTML = new Intl.NumberFormat('de-DE', {
+            style: 'currency',
+            currency: 'EUR'
+        }).format(inputCurrencyValue / euroToday)
+        
+    }
+
+    if(currencySelectFirst.value  == 'libras') { //Se o select estiver selecionado o valor de libras, vai entrar aqui
+
+        currencyValueConverted.innerHTML = new Intl.NumberFormat('en-GB', {
+            style: 'currency',
+            currency: 'GBP'
+        }).format(inputCurrencyValue / librasToday)
+        
+    }
+
+    if(currencySelectFirst.value  == 'bitcoin') {
+
+        currencyValueConverted.innerHTML = new Intl.NumberFormat('pt-Br', {
+         style: 'currency',
+         currency: 'BTC'   
+        }).format((inputCurrencyValue / bitcoinToday).toFixed(4))
+            
+    }
+
+      // termino do currency First =============================================================================
+
+
+
+
+//=====================================================================================
+
+function changeCurrencyFist() {
+    const currencyOther = document.getElementById('currency')
+    const currencyImg2 = document.querySelector('.currency-img2')
+
+    if(currencySelectFirst.value == 'dolar') {
+        currencyOther.innerHTML = 'Dolar americado'
+        currencyImg2.src = './assets/dolar.png'
+    
+    }
+
+    if(currencySelectFirst.value == 'euro') {
+        currencyOther.innerHTML = 'Euro'
+        currencyImg2.src = './assets/euro.png'
+    }
+
+    if(currencySelectFirst.value == 'libras') {
+        currencyOther.innerHTML = 'Libras esterlinas'
+        currencyImg2.src = './assets/libras.png'
+    }
+
+    if(currencySelectFirst.value == 'bitcoin') {
+        currencyOther.innerHTML = 'Bitcoin'
+        currencyImg2.src = './assets/bitcoin.png'
+    }
+
+}
+
+currencySelectFirst.addEventListener('change', changeCurrencyFist)
+
+
+//=====================================================================================

@@ -15,8 +15,10 @@
 }
 
 body{
+    background-size: cover;
     background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
-    
+    width: 100%;
+    height: auto;
 }   
 
 main {
@@ -29,9 +31,10 @@ main {
 }
 
 .logo {
-    display: block; /*macete para centralizar qlq coisa*/
+    display: flex;
+    justify-content: center; /*macete para centralizar qlq coisa*/
     margin: 10px auto 10px;
-    width: 230px;
+    width: 15rem;
 
 }
 
@@ -94,18 +97,28 @@ section{
 
 arrow {
     margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.currency-box{
+.currency-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* This already centers items horizontally */
     gap: 2px;
+    /* Add these to center vertically */
+    justify-content: center; 
+    height: 100%; /* Ensure the box takes up full height */
 }
+
 
 .currency {
     color:black;
     font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -113,9 +126,23 @@ arrow {
     color: #555555;
     font-weight: 900;
     font-size: 28px;
+    text-align: center;
 }
 
 
 .arrow-img {
-    margin: 5px 0 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

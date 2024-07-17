@@ -150,6 +150,8 @@ img {
 
 /* ... existing styles ... */
 
+
+
 @media (max-width: 375px) {
     body {
         width: 100%; /* Use viewport width for full width */

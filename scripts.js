@@ -1,4 +1,3 @@
-
 const currencySelectFirst = document.querySelector('.currency-select-first');
 const currencySelect = document.querySelector('.currency-select');
 const inputCurrency = document.querySelector('.input-currency');
@@ -10,52 +9,53 @@ const currency = document.querySelector('#currency');
 const currencyImg = document.querySelector('.currency-img');
 const currencyBox = document.querySelectorAll('.currency-box');
 
-const currencies = {
-  real: {
-    dolar: 0.20,
-    euro: 0.19,
-    libras: 0.17,
-    bitcoin: 0.000007,
-  },
-  dolar: {
-    real: 5.00,
-    euro: 0.95,
-    libras: 0.85,
-    bitcoin: 0.000035,
-  },
-  euro: {
-    real: 5.26,
-    dolar: 1.05,
-    libras: 0.90,
-    bitcoin: 0.000037,
-  },
-  libras: {
-    real: 5.88,
-    dolar: 1.18,
-    euro: 1.11,
-    bitcoin: 0.000041,
-  },
-  bitcoin: {
-    real: 142857.14,
-    dolar: 28571.43,
-    euro: 26315.79,
-    libras: 23809.52,
-  },
-};
-
-convertButton.addEventListener('click', () => {
+convertButton.addEventListener('click', async () => {
   const valueToConvert = parseFloat(inputCurrency.value.replace(',', '.'));
   const fromCurrency = currencySelectFirst.value;
   const toCurrency = currencySelect.value;
+
+  const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,GBP-BRL,BTC-BRL")
+    .then(response => response.json());
+
+  const currencies = {
+    real: {
+      dolar: 1 / data.USDBRL.high,
+      euro: 1 / data.EURBRL.high,
+      libras: 1 / data.GBPBRL.high,
+      bitcoin: 1 / data.BTCBRL.high,
+    },
+    dolar: {
+      real: data.USDBRL.high,
+      euro: data.USDBRL.high / data.EURBRL.high,
+      libras: data.USDBRL.high / data.GBPBRL.high,
+      bitcoin: data.USDBRL.high / data.BTCBRL.high,
+    },
+    euro: {
+      real: data.EURBRL.high,
+      dolar: data.EURBRL.high / data.USDBRL.high,
+      libras: data.EURBRL.high / data.GBPBRL.high,
+      bitcoin: data.EURBRL.high / data.BTCBRL.high,
+    },
+    libras: {
+      real: data.GBPBRL.high,
+      dolar: data.GBPBRL.high / data.USDBRL.high,
+      euro: data.GBPBRL.high / data.EURBRL.high,
+      bitcoin: data.GBPBRL.high / data.BTCBRL.high,
+    },
+    bitcoin: {
+      real: data.BTCBRL.high,
+      dolar: data.BTCBRL.high / data.USDBRL.high,
+      euro: data.BTCBRL.high / data.EURBRL.high,
+      libras: data.BTCBRL.high / data.GBPBRL.high,
+    },
+  };
 
   if (isNaN(valueToConvert)) {
     alert('Por favor, insira um valor válido.');
     return;
   }
 
-   // Verifica se as moedas são iguais
-   if (fromCurrency === toCurrency) {
-    currencyImg.src = './assets/error.png';
+  if (fromCurrency === toCurrency) {
     currencyImg.src = './assets/error.png';
     currency.textContent = 'Erro';
     currencyName.textContent = 'Erro';
@@ -63,43 +63,37 @@ convertButton.addEventListener('click', () => {
     return;
   }
 
-  // Realiza a conversão
-
   const convertedValue = valueToConvert * currencies[fromCurrency][toCurrency];
 
   currencyValueToConvert.textContent = `R$ ${valueToConvert.toFixed(2)}`;
   currencyValue.textContent = `${toCurrency.toUpperCase()} ${convertedValue.toFixed(2)}`;
 
-  
-
-  // Update currency name and image based on the selected currency
   currencyName.textContent = toCurrency.toUpperCase();
   currency.textContent = fromCurrency.toUpperCase();
 
   switch (toCurrency) {
     case 'real':
       currencyImg.src = './assets/real.png';
-      currencyValue.textContent = `BRL ${convertedValue.toFixed(2)}`; // Adiciona BRL para real
+      currencyValue.textContent = `BRL ${convertedValue.toFixed(2)}`;
       break;
     case 'dolar':
       currencyImg.src = './assets/dolar.png';
-      currencyValue.textContent = `USD ${convertedValue.toFixed(2)}`; // Adiciona USD para dolar
+      currencyValue.textContent = `USD ${convertedValue.toFixed(2)}`;
       break;
     case 'euro':
       currencyImg.src = './assets/euro.png';
-      currencyValue.textContent = `EUR ${convertedValue.toFixed(2)}`; // Adiciona EUR para euro
+      currencyValue.textContent = `EUR ${convertedValue.toFixed(2)}`;
       break;
     case 'libras':
       currencyImg.src = './assets/libras.png';
-      currencyValue.textContent = `GBP ${convertedValue.toFixed(2)}`; // Adiciona GBP para libras
+      currencyValue.textContent = `GBP ${convertedValue.toFixed(2)}`;
       break;
     case 'bitcoin':
       currencyImg.src = './assets/bitcoin.png';
-      currencyValue.textContent = `BTC ${convertedValue.toFixed(2)}`; // Adiciona BTC para bitcoin
+      currencyValue.textContent = `BTC ${convertedValue.toFixed(2)}`;
       break;
   }
 
-  // Update currency box visibility
   currencyBox.forEach(box => {
     box.style.display = 'block';
   });

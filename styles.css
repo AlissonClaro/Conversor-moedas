@@ -18,7 +18,7 @@ body{
     background-size: cover;
     background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
     width: 100%;
-    height: auto;
+    height: 100vh;
 }   
 
 main {
@@ -34,7 +34,7 @@ main {
     display: flex;
     justify-content: center; /*macete para centralizar qlq coisa*/
     margin: 10px auto 10px;
-    width: 15rem;
+    width: 13rem;
 
 }
 
